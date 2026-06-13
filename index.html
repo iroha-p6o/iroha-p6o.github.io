@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="片思い相性診断 ✦ いろは【恋愛心理】">
+<meta property="og:description" content="気になるあの人との相性を占います。あなたの恋心に答えを。">
+<meta property="og:type" content="website">
+<title>片思い相性診断 ✦ いろは【恋愛心理】</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #0e0618;
+    --purple: #3b1f5e;
+    --violet: #6b35a8;
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --rose: #e8799a;
+    --mist: #ded4f5;
+    --cream: #faf6ff;
+    --card-bg: rgba(28,10,52,0.88);
+    --border-glow: rgba(201,168,76,0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--dark);
+    color: var(--mist);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Background ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(107,53,168,0.38) 0%, transparent 68%),
+      radial-gradient(ellipse 50% 35% at 15% 100%, rgba(232,121,154,0.12) 0%, transparent 55%),
+      var(--dark);
+  }
+
+  .stars {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 8%  12%, rgba(255,255,255,.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(255,255,255,.50) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 38%  6%, rgba(240,208,128,.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 22%, rgba(255,255,255,.60) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 58%, rgba(255,255,255,.40) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 83% 13%, rgba(240,208,128,.65) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 72%, rgba(255,255,255,.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 14% 82%, rgba(255,255,255,.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 48% 53%, rgba(255,255,255,.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 68%, rgba(255,255,255,.60) 0%, transparent 100%),
+      radial-gradient(1px 1px at  4% 47%, rgba(255,255,255,.40) 0%, transparent 100%),
+      radial-gradient(1px 1px at 96% 42%, rgba(255,255,255,.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 62% 88%, rgba(255,255,255,.30) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 31%, rgba(255,255,255,.45) 0%, transparent 100%);
+  }
+
+  /* ── Layout ── */
+  .wrap { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 0 16px 64px; }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 52px 24px 36px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.38em;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 50px;
+    padding: 5px 18px;
+    margin-bottom: 22px;
+    opacity: 0.9;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.35;
+    text-shadow: 0 0 40px rgba(107,53,168,0.9), 0 2px 6px rgba(0,0,0,0.8);
+    margin-bottom: 12px;
+  }
+
+  .hero-sub {
+    font-size: 0.83rem;
+    color: var(--mist);
+    opacity: 0.72;
+    letter-spacing: 0.12em;
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  /* ── Channel CTA button (hero) ── */
+  .yt-cta {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: linear-gradient(135deg, #1a0a2e 0%, #2e1050 100%);
+    border: 1px solid rgba(201,168,76,0.5);
+    border-radius: 50px;
+    padding: 12px 24px;
+    color: var(--gold-light);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 4px 18px rgba(107,53,168,0.4), 0 0 0 1px rgba(201,168,76,0.15);
+    cursor: pointer;
+  }
+  .yt-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(107,53,168,0.6), 0 0 12px rgba(201,168,76,0.2);
+    background: linear-gradient(135deg, #240e3e 0%, #3d1868 100%);
+  }
+  .yt-cta-icon { font-size: 1.1rem; }
+  .yt-cta-label { line-height: 1.2; }
+  .yt-cta-name { font-size: 0.72rem; opacity: 0.75; display: block; }
+
+  /* ── Divider ── */
+  .divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 24px 0;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.45), transparent);
+  }
+  .divider-icon { color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-glow);
+    border-radius: 18px;
+    padding: 26px 22px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(201,168,76,0.12);
+    animation: fadeUp 0.45s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.73rem;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* ── Form fields ── */
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-size: 0.79rem;
+    color: var(--mist);
+    opacity: 0.82;
+    margin-bottom: 7px;
+    letter-spacing: 0.04em;
+  }
+
+  .field input, .field select {
+    width: 100%;
+    background: rgba(255,255,255,0.046);
+    border: 1px solid rgba(201,168,76,0.28);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--cream);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.22s, box-shadow 0.22s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .field input:focus, .field select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.11);
+  }
+  .field select option { background: #2a1048; color: var(--cream); }
+
+  .select-wrap { position: relative; }
+  .select-wrap::after {
+    content: '▾';
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--gold); pointer-events: none; font-size: 0.88rem;
+  }
+
+  /* ── Fortune button ── */
+  .fortune-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--violet) 0%, #9b4dca 50%, var(--violet) 100%);
+    border: 1px solid var(--gold);
+    border-radius: 50px;
+    padding: 16px;
+    color: var(--gold-light);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    letter-spacing: 0.18em;
+    cursor: pointer;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 22px rgba(107,53,168,0.55);
+    margin-top: 10px;
+  }
+  .fortune-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(107,53,168,0.75), 0 0 16px rgba(201,168,76,0.18); }
+  .fortune-btn:active { transform: translateY(0); }
+  .fortune-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+    transform: translateX(-100%); transition: transform 0.55s;
+  }
+  .fortune-btn:hover::before { transform: translateX(100%); }
+
+  /* ── Result ── */
+  #result { display: none; }
+
+  .result-score-wrap { text-align: center; margin-bottom: 22px; }
+
+  .result-score-label {
+    font-size: 0.7rem; letter-spacing: 0.3em; color: var(--gold);
+    margin-bottom: 14px; font-family: 'Noto Serif JP', serif;
+  }
+
+  .score-ring { width: 136px; height: 136px; margin: 0 auto 14px; position: relative; }
+  .score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .score-ring .track { fill: none; stroke: rgba(255,255,255,0.07); stroke-width: 8; }
+  .score-ring .fill {
+    fill: none; stroke-width: 8; stroke-linecap: round;
+    stroke-dasharray: 339; stroke-dashoffset: 339;
+    transition: stroke-dashoffset 1.8s cubic-bezier(0.35,0,0.1,1);
+  }
+  .score-number {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Noto Serif JP', serif;
+  }
+  .score-num { font-size: 2.6rem; font-weight: 600; color: var(--gold-light); line-height: 1; }
+  .score-pct { font-size: 0.72rem; color: var(--mist); opacity: 0.65; }
+
+  .result-grade { font-family: 'Noto Serif JP', serif; font-size: 1.25rem; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .result-emoji { font-size: 1.8rem; }
+
+  .result-body {
+    font-size: 0.87rem; line-height: 1.95; color: var(--mist); opacity: 0.92;
+    border-top: 1px solid rgba(201,168,76,0.18); padding-top: 18px; margin-top: 18px;
+  }
+  .result-tip {
+    background: rgba(107,53,168,0.18);
+    border-left: 3px solid var(--rose);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px; margin-top: 14px;
+    font-size: 0.81rem; line-height: 1.72;
+  }
+  .result-tip::before { content: '💌 アドバイス　'; color: var(--rose); font-weight: bold; }
+
+  /* ── Share row ── */
+  .share-row {
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    margin-top: 22px;
+  }
+  .share-label {
+    font-size: 0.68rem; letter-spacing: 0.3em; color: var(--gold);
+    font-family: 'Noto Serif JP', serif;
+  }
+  .share-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+  /* LINE button */
+  .line-btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: #06C755; color: #fff;
+    border: none; border-radius: 50px;
+    padding: 13px 26px;
+    font-size: 0.88rem; font-family: 'Noto Sans JP', sans-serif; font-weight: bold;
+    cursor: pointer; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(6,199,85,0.35);
+  }
+  .line-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(6,199,85,0.48); }
+  .line-icon { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
+
+  /* Post-result YT CTA */
+  .yt-cta-result {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: linear-gradient(135deg, #1a0a2e 0%, #2e1050 100%);
+    border: 1px solid rgba(201,168,76,0.5);
+    border-radius: 50px;
+    padding: 13px 22px;
+    color: var(--gold-light);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 18px rgba(107,53,168,0.35);
+    cursor: pointer;
+  }
+  .yt-cta-result:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(107,53,168,0.55), 0 0 10px rgba(201,168,76,0.18); }
+
+  /* ── YouTube section ── */
+  .yt-card { }
+  .yt-card-header { text-align: center; margin-bottom: 18px; }
+  .yt-card-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.73rem; letter-spacing: 0.3em; color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .yt-channel-link {
+    display: inline-block; color: var(--rose);
+    font-size: 0.78rem; text-decoration: none;
+    opacity: 0.85; transition: opacity 0.2s;
+  }
+  .yt-channel-link:hover { opacity: 1; }
+
+  .shorts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .short-item {
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  .short-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    border-radius: 12px; overflow: hidden;
+    background: #1a0a2e;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+  }
+  .short-video iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .short-title {
+    font-size: 0.72rem;
+    color: var(--mist);
+    opacity: 0.75;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+  @media (max-width: 480px) {
+    .shorts-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center; padding: 32px 16px 16px;
+    font-size: 0.68rem; color: var(--mist); opacity: 0.35;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 400px) {
+    .hero-title { font-size: 1.6rem; }
+    .card { padding: 20px 14px; }
+    .shorts-grid { gap: 7px; }
+    .share-btns { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<div class="wrap">
+
+  <!-- ── Hero ── -->
+  <div class="hero">
+    <div class="hero-badge">✦ 片思い専用 占い ✦</div>
+    <h1 class="hero-title">気になるあの人との<br>相性診断</h1>
+    <p class="hero-sub">生まれ月・血液型・今の関係性から<br>ふたりの縁を心理学で紐解きます</p>
+
+    <!-- Hero YT CTA -->
+    <a class="yt-cta" href="https://www.youtube.com/channel/UCk7-qwhdjkxZUqMuF82Q97g" target="_blank">
+      <span class="yt-cta-icon">▶</span>
+      <span class="yt-cta-label">
+        いろは【恋愛心理】
+        <span class="yt-cta-name">YouTubeチャンネルを見る</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="divider"><span class="divider-icon">🔮</span></div>
+
+  <!-- ── Form ── -->
+  <div class="card">
+    <p class="card-title">✦ あなたのことを教えて</p>
+
+    <div class="field">
+      <label>あなたの名前（ニックネームでOK）</label>
+      <input type="text" id="myName" placeholder="例：はな" maxlength="20">
+    </div>
+    <div class="field">
+      <label>あなたの生まれ月</label>
+      <div class="select-wrap">
+        <select id="myMonth">
+          <option value="">選んでね</option>
+          <option value="1">1月</option><option value="2">2月</option>
+          <option value="3">3月</option><option value="4">4月</option>
+          <option value="5">5月</option><option value="6">6月</option>
+          <option value="7">7月</option><option value="8">8月</option>
+          <option value="9">9月</option><option value="10">10月</option>
+          <option value="11">11月</option><option value="12">12月</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>あなたの血液型</label>
+      <div class="select-wrap">
+        <select id="myBlood">
+          <option value="">わからない</option>
+          <option value="A">A型</option>
+          <option value="B">B型</option>
+          <option value="O">O型</option>
+          <option value="AB">AB型</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="divider"><span class="divider-icon">💫</span></div>
+
+    <p class="card-title">✦ 気になるあの人のことを教えて</p>
+
+    <div class="field">
+      <label>相手の名前（イニシャルでもOK）</label>
+      <input type="text" id="themName" placeholder="例：K.T." maxlength="20">
+    </div>
+    <div class="field">
+      <label>相手の生まれ月</label>
+      <div class="select-wrap">
+        <select id="themMonth">
+          <option value="">わからない</option>
+          <option value="1">1月</option><option value="2">2月</option>
+          <option value="3">3月</option><option value="4">4月</option>
+          <option value="5">5月</option><option value="6">6月</option>
+          <option value="7">7月</option><option value="8">8月</option>
+          <option value="9">9月</option><option value="10">10月</option>
+          <option value="11">11月</option><option value="12">12月</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>相手の血液型</label>
+      <div class="select-wrap">
+        <select id="themBlood">
+          <option value="">わからない</option>
+          <option value="A">A型</option>
+          <option value="B">B型</option>
+          <option value="O">O型</option>
+          <option value="AB">AB型</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>今の状況は？</label>
+      <div class="select-wrap">
+        <select id="situation">
+          <option value="0">まだ話したこともない</option>
+          <option value="1">友達・知り合い</option>
+          <option value="2">よく話す仲</option>
+          <option value="3">2人で会ったことある</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="fortune-btn" onclick="runFortune()">✨ 相性を占う ✨</button>
+  </div>
+
+  <!-- ── Result ── -->
+  <div class="card" id="result">
+    <p class="card-title">🔮 占い結果</p>
+
+    <div class="result-score-wrap">
+      <p class="result-score-label">ふたりの相性スコア</p>
+      <div class="score-ring">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="54"/>
+          <circle class="fill" id="scoreArc" cx="60" cy="60" r="54"/>
+        </svg>
+        <div class="score-number">
+          <span class="score-num" id="scoreNum">0</span>
+          <span class="score-pct">/ 100</span>
+        </div>
+      </div>
+      <p class="result-grade" id="resultGrade"></p>
+      <p class="result-emoji" id="resultEmoji"></p>
+    </div>
+
+    <div class="result-body" id="resultBody"></div>
+    <div class="result-tip" id="resultTip"></div>
+
+    <div class="share-row">
+      <p class="share-label">✦ シェア & チャンネル ✦</p>
+      <div class="share-btns">
+        <!-- LINE share -->
+        <a id="lineShareBtn" href="#" target="_blank" class="line-btn">
+          <svg class="line-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.131.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+          </svg>
+          LINEでシェア
+        </a>
+        <!-- Post-result YT CTA -->
+        <a class="yt-cta-result" href="https://www.youtube.com/channel/UCk7-qwhdjkxZUqMuF82Q97g" target="_blank">
+          ▶ いろは【恋愛心理】を見る
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><span class="divider-icon">✦</span></div>
+
+  <!-- ── YouTube section ── -->
+  <div class="card yt-card">
+    <div class="yt-card-header">
+      <p class="yt-card-title">✦ いろは【恋愛心理】 ✦</p>
+      <a class="yt-channel-link" href="https://www.youtube.com/channel/UCk7-qwhdjkxZUqMuF82Q97g" target="_blank">
+        ▶ チャンネルを見る
+      </a>
+    </div>
+    <div class="shorts-grid">
+      <div class="short-item">
+        <div class="short-video">
+          <iframe src="https://www.youtube.com/embed/zonl87sqIEk"
+            title="女子が 無意識に探しちゃう男子TOP3"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p class="short-title">女子が無意識に探しちゃう男子TOP3</p>
+      </div>
+      <div class="short-item">
+        <div class="short-video">
+          <iframe src="https://www.youtube.com/embed/8fiFNUOKcbw"
+            title="女子が 好きな男子にだけする仕草TOP3"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p class="short-title">女子が好きな男子にだけする仕草TOP3</p>
+      </div>
+      <div class="short-item">
+        <div class="short-video">
+          <iframe src="https://www.youtube.com/embed/o5CFcTctDj4"
+            title="女子が 『また会いたい』ってなる男子TOP3"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p class="short-title">女子が「また会いたい」ってなる男子TOP3</p>
+      </div>
+      <div class="short-item">
+        <div class="short-video">
+          <iframe src="https://www.youtube.com/embed/_aqL27ZnTWQ"
+            title="女子が 『優しすぎて反則…』ってなる男子TOP3"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p class="short-title">女子が「優しすぎて反則…」ってなる男子TOP3</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<footer>© いろは【恋愛心理】✦ 占いはエンターテインメントです</footer>
+
+<script>
+const bloodCompat = {
+  'A-A':75,'A-B':65,'A-O':80,'A-AB':70,
+  'B-A':65,'B-B':72,'B-O':68,'B-AB':78,
+  'O-A':80,'O-B':68,'O-O':74,'O-AB':72,
+  'AB-A':70,'AB-B':78,'AB-O':72,'AB-AB':66
+};
+
+const monthElement = [null,'水','木','木','火','火','土','土','金','金','水','水','土'];
+
+const elementCompat = {
+  '木-木':80,'木-火':88,'木-土':60,'木-金':55,'木-水':85,
+  '火-木':88,'火-火':72,'火-土':78,'火-金':50,'火-水':62,
+  '土-木':60,'土-火':78,'土-土':70,'土-金':82,'土-水':65,
+  '金-木':55,'金-火':50,'金-土':82,'金-金':68,'金-水':80,
+  '水-木':85,'水-火':62,'水-土':65,'水-金':80,'水-水':76
+};
+
+const situationBonus = [0, 5, 10, 15];
+
+const grades = [
+  { min:90, label:'運命の赤い糸💘',     emoji:'💖🌟', color:'#ff6b9d' },
+  { min:80, label:'とても高い相性✨',    emoji:'💕✨', color:'#e879aa' },
+  { min:70, label:'相性◎　脈あり感🌸',  emoji:'🌸💫', color:'#c97fd4' },
+  { min:60, label:'じっくり育てよう🌱', emoji:'🌷💭', color:'#a07cc5' },
+  { min:0,  label:'縁は育てるもの🌙',   emoji:'🌙⭐', color:'#7a6dab' }
+];
+
+const readings = [
+  {
+    min:90,
+    body:(a,b)=>`${a}さんと${b}さんのふたりは、星の配列がまるで示し合わせたかのように調和しています。心理学的に見ると、あなたが自然体でいられる相手であり、相手もあなたの存在に無意識に引き寄せられているサインがあります。あとは勇気のひとかけらだけ。`,
+    tip:()=>`共通の話題を見つけて、自然な流れで"一緒にやってみない？"と誘うのがベスト。相手はあなたの積極性に好感を持つタイプです。`
+  },
+  {
+    min:80,
+    body:(a,b)=>`${a}さんと${b}さんの相性は、心理学の「類似性の法則」に近い。価値観や感性が通じ合いやすく、一緒にいると自然と会話が弾む関係性です。相手はきっとあなたのことを特別な目で見ているはず。`,
+    tip:()=>`相手の好きなことに少し興味を持ってみて。"それ、私も好きかも"という一言が距離を縮める鍵になります。`
+  },
+  {
+    min:70,
+    body:(a,b)=>`${a}さんと${b}さんの間には、穏やかな親近感が流れています。まだ表に出ていない部分での相性はとても良く、もっと時間を共有することで化学反応が起きるタイプの縁です。`,
+    tip:()=>`焦らずに。LINEやSNSで軽いやりとりを増やして、まずは"気軽に話せる人"という印象を作ることが大事です。`
+  },
+  {
+    min:60,
+    body:(a,b)=>`${a}さんと${b}さんは、性格的に補い合えるポテンシャルを持っています。最初は少しテンポが合わないかもしれませんが、それは決してマイナスじゃない。違いを楽しめるようになったとき、深い絆が生まれます。`,
+    tip:()=>`相手の"ペース"を尊重しながら関わってみて。急かさず、でも少しずつ存在感を示していくことが大切です。`
+  },
+  {
+    min:0,
+    body:(a,b)=>`${a}さんと${b}さんの縁は、まだこれから育てていくもの。心理学では「近接効果」と言って、一緒にいる時間が自然と好意を育てます。今すぐの相性より、これからどう関わるかがすべて。`,
+    tip:()=>`笑顔で挨拶するだけでも、相手の記憶に残ります。小さな積み重ねが、いつか大きな恋になります。`
+  }
+];
+
+function runFortune() {
+  const myName   = document.getElementById('myName').value.trim()   || 'あなた';
+  const myMonth  = parseInt(document.getElementById('myMonth').value)  || 0;
+  const myBlood  = document.getElementById('myBlood').value;
+  const themName = document.getElementById('themName').value.trim() || '彼';
+  const themMonth= parseInt(document.getElementById('themMonth').value) || 0;
+  const themBlood= document.getElementById('themBlood').value;
+  const situation= parseInt(document.getElementById('situation').value);
+
+  // 両方わからない場合は名前だけで計算（0は「わからない」扱い）
+  let score = 0;
+
+  // Element compat: if month unknown use neutral 70
+  const eScore = (myMonth && themMonth)
+    ? (elementCompat[monthElement[myMonth] + '-' + monthElement[themMonth]] || 70)
+    : 70;
+  score += eScore * 0.50;
+
+  // Blood compat
+  const bScore = (myBlood && themBlood)
+    ? (bloodCompat[myBlood + '-' + themBlood] || 70)
+    : 70;
+  score += bScore * 0.35;
+
+  // Situation
+  score += (65 + situationBonus[situation]) * 0.15;
+
+  // Name numerology sprinkle
+  const nameSum = [...(myName + themName)].reduce((s,c) => s + c.charCodeAt(0), 0) % 16 - 8;
+  score = Math.min(98, Math.max(30, Math.round(score + nameSum)));
+
+  showResult(score, myName, themName);
+}
+
+function showResult(score, myName, themName) {
+  const resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+  setTimeout(() => resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+
+  const arc = document.getElementById('scoreArc');
+  const circumference = 339;
+  const grade = grades.find(g => score >= g.min);
+  arc.style.stroke = grade.color;
+  arc.style.strokeDashoffset = circumference;
+
+  const numEl = document.getElementById('scoreNum');
+  numEl.textContent = '0';
+  const duration = 1700;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min(1, (now - start) / duration);
+    const ease = 1 - Math.pow(1 - p, 3);
+    numEl.textContent = Math.round(ease * score);
+    arc.style.strokeDashoffset = circumference * (1 - ease * score / 100);
+    if (p < 1) requestAnimationFrame(step);
+    else { numEl.textContent = score; arc.style.strokeDashoffset = circumference * (1 - score / 100); }
+  }
+  requestAnimationFrame(step);
+
+  document.getElementById('resultGrade').textContent = grade.label;
+  document.getElementById('resultGrade').style.color = grade.color;
+  document.getElementById('resultEmoji').textContent = grade.emoji;
+
+  const reading = readings.find(r => score >= r.min);
+  document.getElementById('resultBody').textContent = reading.body(myName, themName);
+  document.getElementById('resultTip').textContent  = reading.tip(myName, themName);
+
+  // LINE share URL — recommend the site to friends (no result details)
+  const shareText = `💕 片思いしてる人におすすめ！\n\n「いろは【恋愛心理】」の相性診断やってみた✨\n生まれ月と血液型だけで、気になる人との相性がわかるよ🔮\n\n恋愛で悩んでる子にもシェアしてみて💌`;
+  document.getElementById('lineShareBtn').href =
+    'https://line.me/R/msg/text/?' + encodeURIComponent(shareText);
+}
+</script>
+</body>
+</html>
