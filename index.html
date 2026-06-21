@@ -704,7 +704,8 @@ function showResult(score, myName, themName) {
   document.getElementById('resultTip').textContent  = reading.tip(myName, themName);
 
   // LINE share URL — recommend the site to friends (no result details)
-  const shareText = `💕 片思いしてる人におすすめ！\n\n「いろは【恋愛心理】」の相性診断やってみた✨\n生まれ月と血液型だけで、気になる人との相性がわかるよ🔮\n\n恋愛で悩んでる子にもシェアしてみて💌`;
+  const shareUrl = window.location.href.split('#')[0];
+  const shareText = `💕 片思いしてる人におすすめ！\n\n「いろは【恋愛心理】」の相性診断やってみた✨\n生まれ月と血液型だけで、気になる人との相性がわかるよ🔮\n\n恋愛で悩んでる子にもシェアしてみて💌\n\n${shareUrl}`;
   document.getElementById('lineShareBtn').href =
     'https://line.me/R/msg/text/?' + encodeURIComponent(shareText);
 }
